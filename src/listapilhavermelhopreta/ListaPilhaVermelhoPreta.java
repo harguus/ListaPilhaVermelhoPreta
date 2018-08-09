@@ -9,11 +9,13 @@ public class ListaPilhaVermelhoPreta {
     public Object[] pilha;
     public int posicaoPilhaV;
     public int posicaoPilhaP;
+    public int tamanho;
     
-    public ListaPilhaVermelhoPreta() {
+    public ListaPilhaVermelhoPreta(int t) {
+        this.tamanho = t - 1;
         this.posicaoPilhaV = -1;
-        this.posicaoPilhaP = 11;
-        this.pilha = new Object[10];
+        this.posicaoPilhaP = this.tamanho;
+        this.pilha = new Object[t];
     }
     
     //isEmpty
@@ -25,7 +27,7 @@ public class ListaPilhaVermelhoPreta {
     }
     
     public boolean isEmptyP() {
-        if (this.posicaoPilhaP == 11) {
+        if (this.posicaoPilhaP == this.tamanho) {
             return true;
         }
         return false;
@@ -33,7 +35,6 @@ public class ListaPilhaVermelhoPreta {
     
     //Sizes
     public int sizeV() {
-        
         if (this.isEmptyV()) {
             return 0;
         }
@@ -41,7 +42,6 @@ public class ListaPilhaVermelhoPreta {
     }
     
     public int sizeP() {
-        
         if (this.isEmptyP()) {
             return 0;
         }
@@ -50,7 +50,6 @@ public class ListaPilhaVermelhoPreta {
     
     //Tops
     public Object topVermelho() {
-        //top
         if (this.isEmptyV()) {
             return null;
         }
@@ -58,7 +57,6 @@ public class ListaPilhaVermelhoPreta {
     }
     
     public Object topPreto() {
-        //top
         if (this.isEmptyP()) {
             return null;
         }
@@ -81,9 +79,9 @@ public class ListaPilhaVermelhoPreta {
     }
     
     //Pushs
-    public void pushVermelhor(Object e){
+    public void pushVermelho(Object e){
         if ((this.posicaoPilhaP - this.posicaoPilhaV) == 1 ) {
-            //pilha vermelha cheia
+            System.out.println("ta cheia");
         } else{
             this.pilha[++posicaoPilhaV] = e;
         }
@@ -91,7 +89,7 @@ public class ListaPilhaVermelhoPreta {
     
     public void pushPreto(Object e){
         if ((this.posicaoPilhaV - this.posicaoPilhaP) == 1 ) {
-            //pilha preta cheia
+            System.out.println("Tá lotado!");
         } else{
             this.pilha[--posicaoPilhaP] = e;
         }
@@ -100,7 +98,32 @@ public class ListaPilhaVermelhoPreta {
     
     
     public static void main(String[] args) {
-        // TODO code application logic here
+        ListaPilhaVermelhoPreta p = new ListaPilhaVermelhoPreta(10);
+        System.out.println("Tamanho preto: " + p.sizeP());
+        System.out.println("Tamanho vermelho: " + p.sizeV());
+        System.out.println("Preto vazio? " + p.isEmptyP());
+        System.out.println("Vermelho vazio? " + p.isEmptyV());
+        System.out.println("Inserindo no preto...");
+        p.pushPreto("elemento preto");
+        p.pushPreto("elemento preto");
+        p.pushPreto("elemento preto");
+        p.pushPreto("ultimo preto");
+        System.out.println("Inserindo no vermelho...");
+        p.pushVermelho("elemento vermelho");
+        p.pushVermelho("elemento vermelho");
+        p.pushVermelho("elemento vermelho");
+        p.pushVermelho("elemento vermelho");
+        p.pushVermelho("ultimo vermelho");
+        System.out.println("Preto vazio? " + p.isEmptyP());
+        System.out.println("Tamanho preto: " + p.sizeP());
+        System.out.println("Topo do Preto: " + p.topPreto());
+        System.out.println("Vermelho vazio? " + p.isEmptyV());
+        System.out.println("Tamanho vermelho: " + p.sizeV());
+        System.out.println("Topo do Vermelhor: " + p.topVermelho());
+        System.out.println("Posição preto: " + p.posicaoPilhaP);
+        System.out.println("Posição vermelho: " + p.posicaoPilhaV);
+        System.out.println("Tamanho total: " + p.tamanho);
+        
     }
     
 }
