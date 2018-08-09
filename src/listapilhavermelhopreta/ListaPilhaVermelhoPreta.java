@@ -18,14 +18,14 @@ public class ListaPilhaVermelhoPreta {
     
     //isEmpty
     public boolean isEmptyV() {
-        if (this.posicaoPilhaV == -1 || this.posicaoPilhaP == 11) {
+        if (this.posicaoPilhaV == -1) {
             return true;
         }
         return false;
     }
     
     public boolean isEmptyP() {
-        if (this.posicaoPilhaV == -1 || this.posicaoPilhaP == 11) {
+        if (this.posicaoPilhaP == 11) {
             return true;
         }
         return false;
