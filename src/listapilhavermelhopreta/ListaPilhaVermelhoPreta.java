@@ -86,11 +86,14 @@ public class ListaPilhaVermelhoPreta {
             for(int i = 0; i <= this.posicaoPilhaV; i++ ){
                 newPilha[i] = this.pilha[i];
             }
-            for(int p = newPilha.length - 1; p > (newPilha.length - this.posicaoPilhaP); p--){
-                newPilha[p] = this.pilha[p - this.pilha.length];
-                this.posicaoPilhaP = p;
+            for(int p = 0; p < this.sizeP(); p++){
+                newPilha[(newPilha.length -1) - p ] = this.pilha[(this.pilha.length - 1) - p];
+                this.posicaoPilhaP = (newPilha.length -1) - p;
+                System.out.println("index da nova pilha: " + ((newPilha.length -1) - p));
+                System.out.println("index da pilha velha: " + ((this.pilha.length - 1) - p));
             }
             this.pilha = newPilha;
+            this.pilha[++posicaoPilhaV] = e;
         }
         this.pilha[++posicaoPilhaV] = e;
     }
@@ -102,11 +105,14 @@ public class ListaPilhaVermelhoPreta {
             for(int i = 0; i <= this.posicaoPilhaV; i++ ){
                 newPilha[i] = this.pilha[i];
             }
-            for(int p = newPilha.length - 1; p > newPilha.length - this.posicaoPilhaP; p--){
-                newPilha[p] = this.pilha[p - this.pilha.length];
-                this.posicaoPilhaP = p;
+            for(int p = 0; p < this.sizeP(); p++){
+                newPilha[(newPilha.length -1) - p ] = this.pilha[(this.pilha.length - 1) - p];
+                this.posicaoPilhaP = (newPilha.length -1) - p;
+                System.out.println("index da nova pilha: " + ((newPilha.length -1) - p));
+                System.out.println("index da pilha velha: " + ((this.pilha.length - 1) - p));
             }
             this.pilha = newPilha;
+            this.pilha[--posicaoPilhaP] = e;
         }
         
         this.pilha[--posicaoPilhaP] = e;
@@ -115,20 +121,22 @@ public class ListaPilhaVermelhoPreta {
     
     
     public static void main(String[] args) {
-        ListaPilhaVermelhoPreta p = new ListaPilhaVermelhoPreta(10);
-        System.out.println("Tamanho preto: " + p.sizeP());
+        ListaPilhaVermelhoPreta p = new ListaPilhaVermelhoPreta(3);
+        /*System.out.println("Tamanho preto: " + p.sizeP());
         System.out.println("Tamanho vermelho: " + p.sizeV());
         System.out.println("Preto vazio? " + p.isEmptyP());
         System.out.println("Vermelho vazio? " + p.isEmptyV());
         System.out.println("Inserindo no preto...");
-        System.out.println("posição preto: " + p.posicaoPilhaP);
+        System.out.println("posição preto: " + p.posicaoPilhaP);*/
+        p.pushPreto("preto");
         p.pushPreto("ultimo preto");
         System.out.println("posição preto: " + p.posicaoPilhaP);
-        System.out.println("Tamanho preto: " + p.sizeP() );
+        /*System.out.println("Tamanho preto: " + p.sizeP() );
         System.out.println("---------------------");
-        System.out.println("Inserindo no vermelho...");
+        System.out.println("Inserindo no vermelho...");*/
         p.pushVermelho("elemento vermelho");
-        System.out.println("---------------------");
+        System.out.println("posição vermelho: " + p.posicaoPilhaV);
+        /*System.out.println("---------------------");
         System.out.println("Preto vazio? " + p.isEmptyP());
         System.out.println("Tamanho preto: " + p.sizeP());
         System.out.println("Topo do Preto: " + p.topPreto());
@@ -138,7 +146,7 @@ public class ListaPilhaVermelhoPreta {
         System.out.println("Topo do Vermelhor: " + p.topVermelho());
         System.out.println("Posição preto: " + p.posicaoPilhaP);
         System.out.println("Posição vermelho: " + p.posicaoPilhaV);
-        System.out.println("Tamanho total: " + p.tamanho);
+        System.out.println("Tamanho total: " + p.tamanho);*/
         
     }
     
